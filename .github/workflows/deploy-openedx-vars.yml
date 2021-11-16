@@ -29,7 +29,6 @@ jobs:
           echo "Deployment complete"
       - name: "Restart Open edX services to apply changes"
         run: |
-          ssh -o StrictHostKeyChecking=no 159.223.189.100
           ssh root@159.223.189.100 "sudo /edx/bin/supervisorctl restart all"
           echo "Restarted all the services"
 
