@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm -r /var/lib/apt/lists/* -vf
-apt-get update
-apt-get install -y sudo git python3-pip python2.7 python2.7-dev python-apt python-jinja2 build-essential sudo git-core libmysqlclient-dev libffi-dev libssl-dev python3-pip python3-apt python3-jinja2 build-essential sudo git-core libmysqlclient-dev libffi-dev libssl-dev
+sudo rm -r /var/lib/apt/lists/* -vf
+sudo apt-get update
+sudo apt-get install -y sudo git python3-pip python2.7 python2.7-dev python-apt python-jinja2 build-essential sudo git-core libmysqlclient-dev libffi-dev libssl-dev python3-pip python3-apt python3-jinja2 build-essential sudo git-core libmysqlclient-dev libffi-dev libssl-dev
 git clone https://github.com/edx/configuration
 cd configuration/
 git checkout open-release/lilac.master
