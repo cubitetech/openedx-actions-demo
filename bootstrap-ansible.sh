@@ -9,4 +9,3 @@ git checkout open-release/lilac.master
 make requirements
 cd playbooks/
 ansible-playbook edx_ansible.yml -i '127.0.0.1,' -c local -e "CONFIGURATION_VERSION=open-release/lilac.master"
-chmod 400 ~/ssh_key
