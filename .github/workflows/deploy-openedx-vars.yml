@@ -3,7 +3,7 @@
 name: deploy-openedx-vars
 on: [push]
 env:
-  SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 jobs:
   deploy-openedx-vars:
     runs-on: ubuntu-latest
