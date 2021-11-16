@@ -1,0 +1,13 @@
+---
+
+COMMON_ENABLE_DATADOG: false 
+COMMON_ENABLE_SPLUNKFORWARDER: false
+ecommerce_create_demo_data: false
+credentials_create_demo_data: false
+DEMO_ROLE_ENABLED: false 
+SANDBOX_ENABLE_DISCOVERY: false
+SANDBOX_ENABLE_ECOMMERCE: false 
+SANDBOX_ENABLE_ANALYTICS_API: false 
+ENABLE_COMPREHENSIVE_THEMING: true
+EDX_PLATFORM_VERSION: 'open-release\lilac.master'
+EDXAPP_PLATFORM_NAME: 'Your Platform Name Here'
