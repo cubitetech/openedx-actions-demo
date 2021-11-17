@@ -11,8 +11,14 @@ jobs:
       - name: "Install SSH Key"
         uses: shimataro/ssh-key-action@v2
         with:
+          name: id_rsa
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          config: |
+            Host openedx
+              HostName 159.223.189.100
+              User root
+              IdentityFile ~/.ssh/id_rsa
       - name: "Install requiernments and bootstrap ansible"
         shell: bash
         run: |
