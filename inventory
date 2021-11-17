@@ -1,2 +1,2 @@
 [openedx-server]
-159.223.189.100
+159.223.189.100 ansible_user=root
