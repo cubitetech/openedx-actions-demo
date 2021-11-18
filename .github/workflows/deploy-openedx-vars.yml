@@ -23,10 +23,11 @@ jobs:
         run: |
           ssh-keygen -R ${{ secrets.SSH_HOST }}
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-      # - name: "Run ansible playbook to deploy new configuration variables"
-      #   run: |
-      #     sudo /edx/app/edx_ansible/venvs/edx_ansible/bin/ansible-playbook configuration/playbooks/openedx_native.yml -t edxapp_cfg -i ./inventory
-      #     echo "Deployment complete"
+      - name: "Run ansible playbook to deploy new configuration variables"
+        run: |
+          ssh root@159.223.189.100 "echo connected to the openedx server"
+          sudo /edx/app/edx_ansible/venvs/edx_ansible/bin/ansible-playbook configuration/playbooks/openedx_native.yml -t edxapp_cfg -i ./inventory
+          echo "Deployment complete"
       - name: "Restart Open edX services to apply changes"
         run: |
           ssh root@159.223.189.100 "sudo /edx/bin/supervisorctl restart all"
