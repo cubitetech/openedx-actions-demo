@@ -1,4 +1,5 @@
 ---
+COMMON_CONFIG_NO_LOGGING: false
 COMMON_ENABLE_DATADOG: false
 COMMON_ENABLE_SPLUNKFORWARDER: false
 ecommerce_create_demo_data: false
