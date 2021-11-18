@@ -11,8 +11,8 @@ jobs:
       - name: "Install requiernments and bootstrap ansible"
         shell: bash
         run: |
-          chmod +x ./bootstrap-ansible.sh
-          sh ./bootstrap-ansible.sh
+          chmod +x ./scripts/bootstrap-ansible.sh
+          sh ./scripts/bootstrap-ansible.sh
       - name: "Install SSH Key"
         uses: shimataro/ssh-key-action@v2
         with:
@@ -25,11 +25,11 @@ jobs:
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: "Run ansible playbook to deploy new configuration variables"
         run: |
-          ssh root@159.223.189.100 "echo connected to the openedx server"
+          ssh root@${{ secrets.SSH_HOST }} "echo connected to the openedx server"
           echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} >> ~/.ansible_vault_pass.txt
-          sudo ANSIBLE_CONFIG="./ansible.cfg" /edx/app/edx_ansible/venvs/edx_ansible/bin/ansible-playbook /edx/app/edx_ansible/edx_ansible/playbooks/openedx_native.yml --vault-password-file ~/.ansible_vault_pass.txt -t edxapp_cfg -i ./inventory -e@./edx-configs/vars.yml -e@./edx-configs/passwords.yml
+          sudo ANSIBLE_CONFIG="./ansible-configs/ansible.cfg" /edx/app/edx_ansible/venvs/edx_ansible/bin/ansible-playbook /edx/app/edx_ansible/edx_ansible/playbooks/openedx_native.yml --vault-password-file ~/.ansible_vault_pass.txt -t edxapp_cfg -i ./ansible-configs/inventory -e@./edx-configs/vars.yml -e@./edx-configs/passwords.yml
           echo "Deployment complete"
       - name: "Restart Open edX services to apply changes"
         run: |
-          ssh root@159.223.189.100 "sudo /edx/bin/supervisorctl restart all"
+          ssh root@${{ secrets.SSH_HOST }} "sudo /edx/bin/supervisorctl restart all"
           echo "Restarted all the services"
