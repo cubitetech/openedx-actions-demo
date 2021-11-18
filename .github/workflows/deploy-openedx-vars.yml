@@ -26,7 +26,8 @@ jobs:
       - name: "Run ansible playbook to deploy new configuration variables"
         run: |
           ssh root@159.223.189.100 "echo connected to the openedx server"
-          sudo /edx/app/edx_ansible/venvs/edx_ansible/bin/ansible-playbook configuration/playbooks/openedx_native.yml -t edxapp_cfg -i ./inventory -e@./edx-configs/vars.yml
+          ${{ ANSIBLE_VAULT_PASSWORD }} >> ~/.ansible_vault_pass.txt
+          sudo /edx/app/edx_ansible/venvs/edx_ansible/bin/ansible-playbook configuration/playbooks/openedx_native.yml --vault-password-file ~/.ansible_vault_pass.txt -t edxapp_cfg -i ./inventory -e@./edx-configs/vars.yml
           echo "Deployment complete"
       - name: "Restart Open edX services to apply changes"
         run: |
