@@ -13,4 +13,4 @@ EDX_PLATFORM_VERSION: 'open-release/lilac.master'
 EDXAPP_DEFAULT_SITE_THEME: 'cubite-theme'
 EDXAPP_COMPREHENSIVE_THEME_DIRS:
   - '/edx-themes'
-EDXAPP_PLATFORM_NAME: 'Cubite Demo Site'
+EDXAPP_PLATFORM_NAME: 'Cubite Technologies'
